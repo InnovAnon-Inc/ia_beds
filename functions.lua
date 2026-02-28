@@ -322,16 +322,17 @@ if enable_respawn then
 	end)
 end
 
-minetest.register_on_leaveplayer(function(player)
+beds.on_leaveplayer = function(player)
 	local name = player:get_player_name()
 	lay_down(player, nil, nil, false, true)
 	beds.player[name] = nil
 	if check_in_beds() then
 		schedule_update()
 	end
-end)
+end
+minetest.register_on_leaveplayer(beds.on_leaveplayer)
 
-minetest.register_on_dieplayer(function(player)
+beds.on_dieplayer = function(player)
 	local name = player:get_player_name()
 	local in_bed = beds.player
 	local pos = player:get_pos()
@@ -342,7 +343,8 @@ minetest.register_on_dieplayer(function(player)
 		player:set_look_horizontal(yaw)
 		player:set_pos(pos)
 	end
-end)
+end
+minetest.register_on_dieplayer(beds.on_dieplayer)
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname ~= "beds_form" then
