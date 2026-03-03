@@ -241,7 +241,7 @@ local function schedule_update()
 	minetest.after(2, function()
 		update_scheduled = false
 		if not is_sp then
-			update_formspecs(is_night_skip_enabled())
+--			update_formspecs(is_night_skip_enabled())
 		end
 		if is_night_skip_enabled() then
 			-- skip the night and let all players stand up
@@ -291,7 +291,7 @@ function beds.on_rightclick(pos, player)
 	end
 
 	if not is_sp then
-		update_formspecs(false)
+--		update_formspecs(false)
 	end
 
 	if check_in_beds() then
