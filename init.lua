@@ -4,11 +4,12 @@
 local S = minetest.get_translator("beds")
 local esc = minetest.formspec_escape
 
-beds = {}
-beds.player = {}
-beds.bed_position = {}
-beds.pos = {}
-beds.spawn = {}
+beds                = {}
+beds.mod            = 'ia'
+beds.player         = {}
+beds.bed_position   = {}
+beds.pos            = {}
+beds.spawn          = {}
 beds.get_translator = S
 
 beds.formspec = "size[8,11;true]" ..
